@@ -1,24 +1,45 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import ConnectButton from './common/components/ConnectButton'
-import { AppDispatch } from './state/store';
-import { useDispatch } from 'react-redux';
-import { attachWallet } from './state/services/wallet.service'
+import { useEffect, useState } from "react";
 
-
+import "./App.css";
+import ConnectButton from "./common/components/ConnectButton";
+import { AppDispatch, useAppSelector } from "./state/store";
+import { useDispatch } from "react-redux";
+import { attachWallet } from "./state/services/wallet.service";
+import VoteCard from "./common/components/VoteCard";
+import { fetchVoteState } from "./state/services/contract.service";
 
 function App() {
-  const dispatch: AppDispatch=useDispatch();
-  useEffect(()=> {
-    dispatch(attachWallet());
-  },[])
+	const dispatch: AppDispatch = useDispatch();
+	const candidates = useAppSelector((s) => s.contract.candidates);
+	let isVoted = useAppSelector((s) => s.contract.isVoted);
+	let isConnected = useAppSelector((s) => s.wallet.isConnected);
+	let account = useAppSelector((s) => s.wallet.accountAddress);
 
-  return (
-    <>
-      
-       <ConnectButton/>
-    </>
-  )
+	useEffect(() => {
+		dispatch(attachWallet());
+	}, []);
+	useEffect(() => {
+		if (isConnected && account) dispatch(fetchVoteState());
+	}, [isConnected, account]);
+	return (
+		<>
+			<nav style={{ display: "flex", padding: "1rem" }}>
+				<div style={{ fontSize: "1.3rem", fontWeight: 600 }} className="logo">
+					SillyNFTier Voting
+				</div>
+				<div style={{ flex: "1" }} className="spacer"></div>
+				<ConnectButton/>
+			</nav>
+			<main>
+				{isVoted && <h2 style={{ width: "fit-content", margin: "auto", marginBottom: "2rem" }}>Thank you, You Have Already Voted</h2>}
+				<div className="candidates" style={{ display: "flex", gap: "2rem", justifyContent: "center" }}>
+					{candidates.map((c) => {
+						return <VoteCard key={c.candidateId} id={c.candidateId}  />;
+					})}
+				</div>
+			</main>
+		</>
+	);
 }
 
-export default App
+export default App;
