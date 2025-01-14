@@ -10,7 +10,7 @@ export default function VoteCard({ id }: { id: number }) {
 	let isVoted = useAppSelector((s) => s.contract.isVoted);
 	const dispatch: AppDispatch = useDispatch();
 	useEffect(() => {
-		if (isConnected && isVoted) dispatch(updateCandidateVote(id));
+		if (isConnected && isVoted ) dispatch(updateCandidateVote(id));
 	}, [id, isConnected, isVoted]);
 
 	return (

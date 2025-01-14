@@ -131,6 +131,7 @@ export const contractSlice = createSlice({
 
         }).addCase(updateCandidateVote.fulfilled, (state, action) => {
             state.isLoading = false;
+            state.isVoted=true;
             state.isLoaded = true;
             let candidate = state.candidates.find(x => x.candidateId == action.payload.id)
             if (!candidate) return state
