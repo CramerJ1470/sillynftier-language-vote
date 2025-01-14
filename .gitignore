@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 
 /common/Web3
+
+.vercel

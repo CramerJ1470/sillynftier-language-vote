@@ -2,7 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { Lock } from "./Lock";
+export type { ProgrammingLanguageVote } from "./ProgrammingLanguageVote";
 export type { Web3Voting } from "./Web3Voting";
 export * as factories from "./factories";
 export { Lock__factory } from "./factories/Lock__factory";
+export { ProgrammingLanguageVote__factory } from "./factories/ProgrammingLanguageVote__factory";
 export { Web3Voting__factory } from "./factories/Web3Voting__factory";

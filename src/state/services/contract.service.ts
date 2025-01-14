@@ -1,15 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import Web3VotingContractArtifact from '../../common/web3/artifacts/contracts/Web3Voting.sol/Web3Voting.json'
+import ProgrammingLanguageVoteArtifact from '../../common/web3/artifacts/contracts/ProgrammingLanguageVote.sol/ProgrammingLanguageVote.json'
 import { JsonRpcSigner, ethers } from "ethers";
-import { Web3Voting } from "../../common/web3/typechain-types";
+import { ProgrammingLanguageVote } from "../../common/Web3/typechain-types";
 import { RootState } from "../store";
 import { getSigner } from "./wallet.service";
 
-let contractAbi = Web3VotingContractArtifact.abi;
-let contractAddress = "0x034867Cac8Dd7316ED3D3D82409b6C78dd367696";
+// 
+let contractAbi = ProgrammingLanguageVoteArtifact.abi;
+let contractAddress ="0xfC640EA61DE61E77B687B910DB812a98Cdc32DfE";
+// let contractAddress = "0x034867Cac8Dd7316ED3D3D82409b6C78dd367696";
 
 
-const getContract = (signer: JsonRpcSigner) => new ethers.Contract(contractAddress, contractAbi, signer) as any as Web3Voting
+// const getContract = (signer: JsonRpcSigner) => new ethers.Contract(contractAddress, contractAbi, signer) as any as Web3Voting
+const getContract = (signer: JsonRpcSigner) => new ethers.Contract(contractAddress, contractAbi, signer) as any as ProgrammingLanguageVote;
 interface contractState {
     isLoading: boolean,
     isLoaded: boolean,
@@ -37,12 +40,12 @@ const initialState = {
     isVoting: false,
     errorVoting: false,
     candidates: [
-        {name: "Kathy Hochul",
-            avatarURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Kathy_Hochul_March_2024.jpg/220px-Kathy_Hochul_March_2024.jpg",
+        {name: "Python",
+            avatarURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/800px-Python-logo-notext.svg.png",
             voteCounter:  0,
             candidateId: 1,
-        } ,{name: "Bruce Blakeman",
-        avatarURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Blakeman_Profile_Picture.jpg/220px-Blakeman_Profile_Picture.jpg",
+        } ,{name: "Javascript",
+        avatarURL: "https://www.freepnglogos.com/uploads/javascript-png/javascript-vector-logo-yellow-png-transparent-javascript-vector-12.png",
         voteCounter:  0,
         candidateId: 2,
         },   
@@ -95,7 +98,7 @@ export const contractSlice = createSlice({
     reducers: {
     },
     extraReducers(builder) {
-        builder.addCase(fetchVoteState.pending, (state, action) => {
+        builder.addCase(fetchVoteState.pending, (state, ) => {
             state.isLoading = true;
             state.isLoaded = false;
             state.errorLoading = false;
@@ -105,23 +108,23 @@ export const contractSlice = createSlice({
             state.isLoaded = false;
             state.isLoaded = true;
             state.isVoted = action.payload
-        }).addCase(fetchVoteState.rejected, (state, action) => {
+        }).addCase(fetchVoteState.rejected, (state, ) => {
             state.isLoading = false;
             state.isLoaded = false;
             state.errorLoading = true;
 
-        }).addCase(voteForCandidate.pending, (state, action) => {
+        }).addCase(voteForCandidate.pending, (state, ) => {
             state.isVoting = true;
             state.errorVoting = false;
 
-        }).addCase(voteForCandidate.fulfilled, (state, action) => {
+        }).addCase(voteForCandidate.fulfilled, (state, ) => {
             state.isVoting = false;
             state.isVoted = true;
 
-        }).addCase(voteForCandidate.rejected, (state, action) => {
+        }).addCase(voteForCandidate.rejected, (state, ) => {
             state.isVoting = false;
             state.errorVoting = true;
-        }).addCase(updateCandidateVote.pending, (state, action) => {
+        }).addCase(updateCandidateVote.pending, (state,) => {
             state.isLoading = true;
             state.isLoaded = false;
             state.errorVoting = false;
@@ -135,7 +138,7 @@ export const contractSlice = createSlice({
 
             return state
 
-        }).addCase(updateCandidateVote.rejected, (state, action) => {
+        }).addCase(updateCandidateVote.rejected, (state,) => {
             state.isLoading = false;
             state.isLoaded = false;
             state.errorLoading = true;

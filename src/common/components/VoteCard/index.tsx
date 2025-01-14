@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { AppDispatch, useAppSelector } from "../../../state/store";
 import styles from "./styles.module.scss";
 import { useDispatch } from "react-redux";
@@ -16,8 +16,8 @@ export default function VoteCard({ id }: { id: number }) {
 	return (
 		<>
 			{candidate && (
-				<div className={styles.candidate}>
-					<div className={styles.avatar} style={{ backgroundImage: `url("${candidate.avatarURL}")` }}></div>
+				<div className={styles.candidate} style={{backgroundColor:"rgb(177, 27, 187)", border:"solid rgb(138, 240, 36)",borderWidth: "5px",	borderRadius: "5px"}}>
+					<div className={styles.avatar} style={{  backgroundImage: `url("${candidate.avatarURL}")` }}></div>
 					<div className={styles.name}>{candidate.name}</div>
                     {isVoted && <div className={styles.totalvotes}>Total Votes {candidate.voteCounter}</div>}
 					

@@ -70,7 +70,7 @@ export const walletSlice = createSlice({
     },
     extraReducers(builder) {
 
-        builder.addCase(connectWallet.pending, (state, action) => {
+        builder.addCase(connectWallet.pending, (state, ) => {
             state.isConnected = false
             state.isConnecting = true;
             state.errorConnecting = false;
@@ -82,11 +82,11 @@ export const walletSlice = createSlice({
             state.isConnected = true;
             state.accountAddress = payload.address;
             state.networkId = payload.netowrkId;
-        }).addCase(connectWallet.rejected, (state, action) => {
+        }).addCase(connectWallet.rejected, (state, ) => {
             state.isConnected = false
             state.isConnecting = false;
             state.errorConnecting = true;
-        }).addCase(attachWallet.pending, (state, action) => {
+        }).addCase(attachWallet.pending, (state, ) => {
             state.isConnected = false
             state.isConnecting = true;
             state.errorConnecting = false;
@@ -98,7 +98,7 @@ export const walletSlice = createSlice({
             state.isConnected = true;
             state.accountAddress = payload.address;
             state.networkId = payload.netowrkId;
-        }).addCase(attachWallet.rejected, (state, action) => {
+        }).addCase(attachWallet.rejected, (state, ) => {
             state.isConnected = false
             state.isConnecting = false;
             state.errorConnecting = true;

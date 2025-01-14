@@ -18,6 +18,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Lock__factory>;
     getContractFactory(
+      name: "ProgrammingLanguageVote",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ProgrammingLanguageVote__factory>;
+    getContractFactory(
       name: "Web3Voting",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Web3Voting__factory>;
@@ -28,6 +32,11 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Lock>;
     getContractAt(
+      name: "ProgrammingLanguageVote",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ProgrammingLanguageVote>;
+    getContractAt(
       name: "Web3Voting",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -38,6 +47,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Lock>;
     deployContract(
+      name: "ProgrammingLanguageVote",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ProgrammingLanguageVote>;
+    deployContract(
       name: "Web3Voting",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Web3Voting>;
@@ -47,6 +60,11 @@ declare module "hardhat/types/runtime" {
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Lock>;
+    deployContract(
+      name: "ProgrammingLanguageVote",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ProgrammingLanguageVote>;
     deployContract(
       name: "Web3Voting",
       args: any[],

@@ -2,4 +2,5 @@
 /* tslint:disable */
 /* eslint-disable */
 export { Lock__factory } from "./Lock__factory";
+export { ProgrammingLanguageVote__factory } from "./ProgrammingLanguageVote__factory";
 export { Web3Voting__factory } from "./Web3Voting__factory";
