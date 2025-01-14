@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import ProgrammingLanguageVoteArtifact from '../../common/web3/artifacts/contracts/ProgrammingLanguageVote.sol/ProgrammingLanguageVote.json'
+import ProgrammingLanguageVoteArtifact from '../../common/Web3/artifacts/contracts/ProgrammingLanguageVote.sol/ProgrammingLanguageVote.json'
+
 import { JsonRpcSigner, ethers } from "ethers";
 import { ProgrammingLanguageVote } from "../../common/Web3/typechain-types";
 import { RootState } from "../store";
